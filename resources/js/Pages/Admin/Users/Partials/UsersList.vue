@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SimplePaginator from '@/Components/SimplePaginator.vue';
+import Spinner from '@/Components/Svg/Spinner.vue';
 import SortBy from '@/Components/Table/SortBy.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { useSearchQuery } from '@/Composables/useSearch';
@@ -99,7 +100,7 @@ watch(
                 scroll-region
             >
                 <div
-                    class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8"
+                    class="relative inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8"
                 >
                     <table class="min-w-full divide-y divide-gray-300">
                         <thead>
@@ -190,6 +191,17 @@ watch(
                             </tr>
                         </tbody>
                     </table>
+
+                    <div
+                        v-if="showLoading"
+                        class="absolute inset-0 bg-white opacity-50"
+                    />
+                    <div
+                        v-if="showLoading"
+                        class="absolute inset-0 flex items-center justify-center"
+                    >
+                        <Spinner class="h-16 w-16" />
+                    </div>
                 </div>
             </div>
         </div>

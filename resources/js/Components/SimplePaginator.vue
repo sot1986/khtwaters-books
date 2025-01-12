@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { SimplePaginate } from '@/Types';
 import { Link } from '@inertiajs/vue3';
-import { computed } from 'vue';
+import { computed, nextTick } from 'vue';
 
 defineOptions({
     name: 'SimplePaginator',
 });
 
-defineProps<{
+const props = defineProps<{
     meta: SimplePaginate<unknown>['meta'];
     links: SimplePaginate<unknown>['links'];
+    scrollTo?: string;
 }>();
 
 const url = computed(() => (page: number) => {
@@ -17,6 +18,17 @@ const url = computed(() => (page: number) => {
     url.searchParams.set('page', page.toString());
     return url.toString();
 });
+
+function evaluateScroll() {
+    if (props.scrollTo) {
+        nextTick(() => {
+            const element = document.getElementById(props.scrollTo!);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+}
 </script>
 
 <template>
@@ -28,7 +40,10 @@ const url = computed(() => (page: number) => {
             <Link
                 v-if="links.prev"
                 :href="url(meta.current_page - 1)"
+                prefetch
                 class="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0"
+                :preserve-scroll="!!scrollTo"
+                v-on:success="evaluateScroll"
                 >Previous</Link
             >
             <span
@@ -39,7 +54,10 @@ const url = computed(() => (page: number) => {
             <Link
                 v-if="links.next"
                 :href="url(meta.current_page + 1)"
+                prefetch
                 class="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0"
+                :preserve-scroll="!!scrollTo"
+                v-on:success="evaluateScroll"
                 >Next</Link
             >
             <span

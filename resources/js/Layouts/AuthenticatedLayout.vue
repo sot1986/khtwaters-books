@@ -49,20 +49,20 @@ provide(HeaderKey, { headerTitle, setHeaderTitle });
                             <div
                                 class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"
                             >
+                                <NavLink
+                                    :href="route('dashboard')"
+                                    :active="route().current('dashboard')"
+                                    prefetch="click"
+                                >
+                                    Dashboard
+                                </NavLink>
                                 <template v-if="user.role === 'admin'">
-                                    <NavLink
-                                        :href="route('admin.dashboard')"
-                                        :active="
-                                            route().current('admin.dashboard')
-                                        "
-                                    >
-                                        Dashboard
-                                    </NavLink>
                                     <NavLink
                                         :href="route('admin.all-users')"
                                         :active="
                                             route().current('admin.all-users')
                                         "
+                                        prefetch="click"
                                     >
                                         Users
                                     </NavLink>
@@ -71,6 +71,7 @@ provide(HeaderKey, { headerTitle, setHeaderTitle });
                                         :active="
                                             route().current('admin.all-books')
                                         "
+                                        prefetch="click"
                                     >
                                         Books
                                     </NavLink>
@@ -176,17 +177,18 @@ provide(HeaderKey, { headerTitle, setHeaderTitle });
                     class="sm:hidden"
                 >
                     <div class="space-y-1 pb-3 pt-2">
+                        <ResponsiveNavLink
+                            :href="route('dashboard')"
+                            :active="route().current('dashboard')"
+                            prefetch="click"
+                        >
+                            Dashboard
+                        </ResponsiveNavLink>
                         <template v-if="user.role === 'admin'">
-                            <ResponsiveNavLink
-                                :href="route('admin.dashboard')"
-                                :active="route().current('dashboard')"
-                            >
-                                Dashboard
-                            </ResponsiveNavLink>
-
                             <ResponsiveNavLink
                                 :href="route('admin.all-users')"
                                 :active="route().current('admin.all-users')"
+                                prefetch="click"
                             >
                                 Users
                             </ResponsiveNavLink>
@@ -194,6 +196,7 @@ provide(HeaderKey, { headerTitle, setHeaderTitle });
                             <ResponsiveNavLink
                                 :href="route('admin.all-books')"
                                 :active="route().current('admin.all-books')"
+                                prefetch="click"
                             >
                                 Books
                             </ResponsiveNavLink>

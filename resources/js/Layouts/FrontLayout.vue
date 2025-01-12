@@ -46,26 +46,18 @@ provide(AuthUserKey, user);
                 </nav>
                 <nav v-else class="flex items-center gap-2">
                     <Link
-                        v-if="user.role === 'admin'"
-                        :href="route('admin.dashboard')"
+                        :href="route('profile.edit')"
                         class="text-sm text-gray-600 underline"
                     >
-                        Admin
+                        Profile
                     </Link>
-                    <template v-else>
-                        <Link
-                            :href="route('profile.edit')"
-                            class="text-sm text-gray-600 underline"
-                        >
-                            Profile
-                        </Link>
-                        <Link
-                            :href="route('books.favorites')"
-                            class="text-sm text-gray-600 underline"
-                        >
-                            My Favorites
-                        </Link>
-                    </template>
+                    <Link
+                        v-if="user.role === 'user'"
+                        :href="route('books.favorites')"
+                        class="text-sm text-gray-600 underline"
+                    >
+                        My Favorites
+                    </Link>
                 </nav>
             </header>
             <main class="mt-10">

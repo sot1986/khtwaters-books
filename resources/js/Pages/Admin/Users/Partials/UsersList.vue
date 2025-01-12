@@ -53,6 +53,12 @@ watch(
             only: ['users'],
             preserveScroll: true,
             preserveState: true,
+            onStart: () => {
+                showLoading.value = true;
+            },
+            onFinish: () => {
+                showLoading.value = false;
+            },
         });
     },
 );

@@ -50,16 +50,15 @@ watch(
             only: ['books'],
             preserveScroll: true,
             preserveState: true,
+            onStart: () => {
+                showLoading.value = true;
+            },
+            onFinish: () => {
+                showLoading.value = false;
+            },
         });
     },
 );
-
-router.on('start', () => {
-    showLoading.value = true;
-});
-router.on('finish', () => {
-    showLoading.value = false;
-});
 </script>
 
 <template>

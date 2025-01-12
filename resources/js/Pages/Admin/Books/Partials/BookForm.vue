@@ -29,7 +29,7 @@ const form = useForm(() => ({
     description: props.book?.description ?? '',
     price: props.book?.price ?? 0,
     file: null as File | null,
-    _method: props.book ? 'put' : 'post',
+    _method: props.book?.id ? 'put' : 'post',
 }));
 
 const previewUrl = computed<string | null>(() => {
@@ -86,9 +86,6 @@ function confirmDelete() {
 
 <template>
     <form @submit.prevent="handleSubmit" @reset.prevent="handleReset">
-        <pre>
-            {{ book }}
-        </pre>
         <div class="grid items-center gap-6 sm:grid-cols-6">
             <div class="sm:col-span-4">
                 <InputLabel for="name" value="Name" />

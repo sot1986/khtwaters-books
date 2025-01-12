@@ -65,7 +65,7 @@ watch(
     <div class="bg-white px-4 py-6 sm:rounded-lg sm:px-6 sm:shadow lg:px-8">
         <div class="sm:flex sm:items-center">
             <div class="sm:flex-auto">
-                <h1 class="text-base font-semibold text-gray-900">Users</h1>
+                <h1 class="text-base font-semibold text-gray-900">Books</h1>
                 <p class="mt-2 text-sm text-gray-700">
                     A list of all the books, including their title, price and
                     users likes.
@@ -89,7 +89,7 @@ watch(
             </div>
         </div>
 
-        <div class="mt-8 max-w-sm sm:max-w-md">
+        <div id="search-book" class="mt-8 max-w-sm sm:max-w-md">
             <label for="search">Search</label>
             <TextInput
                 id="search"
@@ -242,6 +242,6 @@ watch(
             </div>
         </div>
 
-        <SimplePaginator v-bind="books" class="mt-6" />
+        <SimplePaginator v-bind="books" class="mt-6" scroll-to="search-book" />
     </div>
 </template>

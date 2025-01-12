@@ -90,7 +90,7 @@ watch(
             </div>
         </div>
 
-        <div class="mt-8 max-w-sm sm:max-w-md">
+        <div class="mt-8 max-w-sm sm:max-w-md" id="search-users">
             <label for="search">Search</label>
             <TextInput
                 id="search"
@@ -212,6 +212,6 @@ watch(
             </div>
         </div>
 
-        <SimplePaginator v-bind="users" class="mt-6" />
+        <SimplePaginator v-bind="users" class="mt-6" scroll-to="search-users" />
     </div>
 </template>

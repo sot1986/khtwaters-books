@@ -19,7 +19,7 @@ class WelcomeController extends Controller
         return Inertia::render('Welcome/Page', [
             'books' => LightBookResource::collection(
                 Book::search($request->query('search', ''))
-                    ->query(fn($query) => $query->with('authUsers'))
+                    ->query(fn($query) => $query->card())
                     ->simplePaginate(12)
             ),
             'canLogin' => Route::has('login'),

@@ -56,7 +56,6 @@ const { auth } = useAuth(true);
                         <Link
                             :href="route('profile.edit')"
                             class="flex items-center justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                            prefetch
                             >View profile
                         </Link>
                     </div>
@@ -70,7 +69,7 @@ const { auth } = useAuth(true);
                     :key="stat.label"
                     class="px-6 py-5 text-center text-sm font-medium"
                 >
-                    <Link :href="stat.link" prefetch class="group px-2 py-1">
+                    <Link :href="stat.link" class="group px-2 py-1">
                         <span
                             class="text-gray-900 group-hover:text-indigo-600"
                             >{{ stat.value }}</span

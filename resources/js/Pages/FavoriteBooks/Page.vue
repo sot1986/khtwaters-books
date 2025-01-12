@@ -38,19 +38,22 @@ defineProps<{
                     :alt="book.title"
                 />
                 <div class="flex-auto">
-                    <div class="flex items-baseline justify-between gap-x-4">
+                    <div
+                        class="flex flex-col items-baseline justify-between gap-x-4 sm:flex-row"
+                    >
                         <Link
-                            class="text-sm/6 font-semibold text-gray-900 hover:text-indigo-700 hover:underline"
+                            class="line-clamp-2 text-sm/6 font-semibold text-gray-900 hover:text-indigo-700 hover:underline"
                             :href="route('books.show', { book: book.id })"
                         >
                             {{ book.title }}
                         </Link>
-                        <p class="flex-none text-xs text-gray-600">
+                        <p
+                            class="flex flex-wrap gap-x-2 gap-y-1 text-xs text-gray-600"
+                        >
                             <time :datetime="book.created_at">{{
                                 toDateTime(book.created_at)
                             }}</time>
 
-                            by
                             <span class="text-gray-900">{{
                                 book.creator?.name
                             }}</span>

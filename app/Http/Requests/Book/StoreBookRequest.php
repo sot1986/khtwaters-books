@@ -27,7 +27,7 @@ class StoreBookRequest extends FormRequest
             'title' => ['required', 'string', 'max:255', Rule::unique(Book::class)],
             'description' => ['required', 'string'],
             'price' => ['required', 'numeric', 'min:0'],
-            'file' => ['required', 'image', 'max:10240'],
+            'file' => ['required', 'image', 'max:1024'],
         ];
     }
 }

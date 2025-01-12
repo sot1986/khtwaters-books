@@ -84,7 +84,6 @@ const { rawSearch } = useSearchQuery();
                 <Link
                     :href="route('books.show', [book.id])"
                     class="mx-auto rounded-md bg-slate-700 px-4 py-2 text-sm font-semibold text-white"
-                    prefetch
                 >
                     <span>Scopri di +</span>
                 </Link>

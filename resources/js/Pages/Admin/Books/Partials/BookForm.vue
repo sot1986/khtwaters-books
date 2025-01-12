@@ -210,7 +210,7 @@ function confirmDelete() {
                             <p class="pl-1">or drag and drop</p>
                         </div>
                         <p class="text-xs/5 text-gray-600">
-                            PNG, JPG, GIF up to 10MB
+                            PNG, JPG, GIF up to 1MB
                         </p>
                     </div>
                 </div>

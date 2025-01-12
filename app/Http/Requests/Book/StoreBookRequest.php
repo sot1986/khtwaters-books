@@ -5,6 +5,7 @@ namespace App\Http\Requests\Book;
 use App\Models\Book;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\File;
 
 class StoreBookRequest extends FormRequest
 {
@@ -27,7 +28,7 @@ class StoreBookRequest extends FormRequest
             'title' => ['required', 'string', 'max:255', Rule::unique(Book::class)],
             'description' => ['required', 'string'],
             'price' => ['required', 'numeric', 'min:0'],
-            'file' => ['required', 'image', 'size:1024'],
+            'file' => ['required', File::image()->max(1024)],
         ];
     }
 }

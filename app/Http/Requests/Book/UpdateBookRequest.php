@@ -5,6 +5,7 @@ namespace App\Http\Requests\Book;
 use App\Models\Book;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\File;
 
 class UpdateBookRequest extends FormRequest
 {
@@ -32,7 +33,7 @@ class UpdateBookRequest extends FormRequest
             ],
             'description' => ['required', 'string'],
             'price' => ['required', 'numeric', 'min:0'],
-            'file' => ['nullable', 'image', 'size:1024'],
+            'file' => ['nullable', File::image()->max(1024)],
         ];
     }
 }

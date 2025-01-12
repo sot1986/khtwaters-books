@@ -46,6 +46,16 @@ function handleUpload(event: Event) {
     if (target.files) {
         form.file = target.files[0];
     }
+    return validateFile();
+}
+
+function validateFile() {
+    form.errors.file = undefined;
+    if ((form.file?.size || 0) > 1024 * 1024) {
+        form.errors.file = 'The file must be less than 1MB';
+        return false;
+    }
+    return true;
 }
 
 function handleSubmit() {
@@ -56,6 +66,10 @@ function handleSubmit() {
         {
             preserveScroll: true,
             forceFormData: true,
+            onBefore: () => {
+                form.clearErrors();
+                return validateFile();
+            },
             onSuccess: () => {
                 handleReset();
                 emits('saved');

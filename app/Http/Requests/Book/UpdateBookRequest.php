@@ -32,7 +32,7 @@ class UpdateBookRequest extends FormRequest
             ],
             'description' => ['required', 'string'],
             'price' => ['required', 'numeric', 'min:0'],
-            'file' => ['nullable', 'image', 'max:1024'],
+            'file' => ['nullable', 'image', 'size:1024'],
         ];
     }
 }
